@@ -1,23 +1,23 @@
 <div class="container-fluid p-3">
-  <h1>{{'analysisChart'|translate|titlecase}}</h1>
-  <p>{{'lessonsNo'|translate}}</p>
+  <h1 class="light-lavander fw-normal">{{'analysisChart'|translate|titlecase}}</h1>
+  <p class="light-lavander">{{'lessonsNo'|translate}}</p>
   <form [formGroup]="filterForm">
     <div class="row g-0 mx-2 d-flex">
 
       <div class="col">
-        <label for="countries">{{'selectCountry'|translate}}</label>
+        <label for="countries" class="font-size-10">{{'selectCountry'|translate}}</label>&nbsp;
         <select id="countries" class="w-50 bg-light-blue drop-min-width" formControlName="country">
           <option *ngFor="let country of countries" [value]="country">{{country}}</option>
         </select>
       </div>
       <div class="col">
-        <label for="camps">{{'selectCamp'|translate}}</label>
+        <label for="camps" class="font-size-10">{{'selectCamp'|translate}}</label>&nbsp;
         <select id="camps" class="w-50 bg-light-blue drop-min-width" formControlName="camp">
           <option *ngFor="let camp of camps" [value]="camp">{{camp}}</option>
         </select>
       </div>
       <div class="col">
-        <label for="schools">{{'selectSchool'|translate}}</label>
+        <label for="schools" class="font-size-10">{{'selectSchool'|translate}}</label>&nbsp;
         <select id="schools" class="w-50 bg-light-blue drop-min-width" formControlName="school">
           <option value="all">{{'showAll'|translate}}</option>
           <option *ngFor="let school of schools" [value]="school.school">{{school.school}}</option>
@@ -42,7 +42,7 @@
       </div>
     </div>
     <div class="col card bg-white">
-      <div class="card-body pt-4">
+      <div class="card-body overflow-auto pt-4" style="height: 150px">
         <span class="font-size-22">{{totalLessons}}</span> &nbsp; <span>{{'lessons'| translate}}</span>
         <p><small>{{'in'|translate}} &nbsp;{{this.filterForm.controls['camp']?.value}}</small></p>
         <div *ngFor="let label of lineChartData; let i=index" (click)="onSelect(i)" class="pointer d-flex"
