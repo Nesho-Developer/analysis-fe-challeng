@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {LocalizationService} from "./core/services/internationalization/localization.service";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'analysis-fe-challenge';
+  constructor(private translate: LocalizationService) {
+  }
+  setLang(lang: string) {
+    this.translate.useLanguage(lang).then()
+
+  }
 }

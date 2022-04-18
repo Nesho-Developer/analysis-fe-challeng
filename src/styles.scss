@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~bootstrap/dist/css/bootstrap.min.css";
+$bg-color: #F5F6FA;
+$slect-color: #8DD0FA;
+body {
+  background-color: $bg-color;
+}
+.bg-light-blue {
+  background-color: $slect-color;
+}
+.hidden, .showing {
+  font-size: 0.95rem;
+}
+.hidden {
+  opacity: 0.3;
+}
+.pointer {
+  cursor: pointer;
+}
+.font-size-10{
+   font-size: 10px;
+}
+.font-size-22{
+   font-size: 22px;
+}
+.drop-min-width{
+  min-width: 200px;
+  margin-top: 10px;
+}
+
+body.rtl {
+  .ms-3 {
+    margin-right: 20px;
+    margin-left: unset;
+  }
+}

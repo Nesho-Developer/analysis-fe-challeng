@@ -1,0 +1,24 @@
+<div class="container-fluid">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">{{'country'|translate}}</th>
+      <th scope="col">{{'camp'|translate}}</th>
+      <th scope="col">{{'school'|translate}}</th>
+      <th scope="col">{{'month'|translate}}</th>
+      <th scope="col">{{'lessons'|translate}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let l of lessons; let i=index">
+      <th scope="row">{{i}}</th>
+      <td>{{l.country}}</td>
+      <td>{{l.camp}}</td>
+      <td>{{l.school}}</td>
+      <td>{{l.month}}</td>
+      <td>{{l.lessons}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

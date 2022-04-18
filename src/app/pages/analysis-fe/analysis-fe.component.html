@@ -1,0 +1,60 @@
+<div class="container-fluid p-3">
+  <h1>{{'analysisChart'|translate|titlecase}}</h1>
+  <p>{{'lessonsNo'|translate}}</p>
+  <form [formGroup]="filterForm">
+    <div class="row g-0 mx-2 d-flex">
+
+      <div class="col">
+        <label for="countries">{{'selectCountry'|translate}}</label>
+        <select id="countries" class="w-50 bg-light-blue drop-min-width" formControlName="country">
+          <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="camps">{{'selectCamp'|translate}}</label>
+        <select id="camps" class="w-50 bg-light-blue drop-min-width" formControlName="camp">
+          <option *ngFor="let camp of camps" [value]="camp">{{camp}}</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="schools">{{'selectSchool'|translate}}</label>
+        <select id="schools" class="w-50 bg-light-blue drop-min-width" formControlName="school">
+          <option value="all">{{'showAll'|translate}}</option>
+          <option *ngFor="let school of schools" [value]="school.school">{{school.school}}</option>
+        </select>
+      </div>
+
+    </div>
+  </form>
+  <div *ngIf="filterForm.value.school" class="row g-0 mt-5 justify-content-between">
+    <div class="col-12 col-md-9 col-xl-9 col-xxl-8  bg-white card">
+      <div class="card-body pt-4">
+        <p>No of Lessons</p>
+        <canvas baseChart width="auto" height="150"
+                [type]="lineChartType"
+                (chartClick)="onClick($event)"
+                [datasets]="lineChartData"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [legend]="lineChartLegend"
+                [plugins]="lineChartPlugins">
+        </canvas>
+      </div>
+    </div>
+    <div class="col card bg-white">
+      <div class="card-body pt-4">
+        <span class="font-size-22">{{totalLessons}}</span> &nbsp; <span>{{'lessons'| translate}}</span>
+        <p><small>{{'in'|translate}} &nbsp;{{this.filterForm.controls['camp']?.value}}</small></p>
+        <div *ngFor="let label of lineChartData; let i=index" (click)="onSelect(i)" class="pointer d-flex"
+             [ngStyle]="{'color' : label.borderColor}"
+             [ngClass]="label.hidden ? 'hidden' : 'showing'">
+          <input type="radio" class="mt-2" [style]="{'color': label.borderColor}" [checked]="!label.hidden">
+          <div class="ms-3">
+            <span class="font-size-22">{{getTotalSchoolLesson(this.label.data)}}</span>  &nbsp;<span>{{label.label}}</span>
+            <p class="font-size-10">{{'in'}} &nbsp;{{label.label}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
